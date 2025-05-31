@@ -46,7 +46,7 @@ function populateRaceDropdown(seasonIndex) {
     // Add "Before Race 1" option
     const beforeRaceOption = document.createElement('option');
     beforeRaceOption.value = "0"; // Index 0 effectively means before any race in the list
-    beforeRaceOption.textContent = "Before Race 1";
+    beforeRaceOption.textContent = "Start";
     raceSelect.appendChild(beforeRaceOption);
 
     selectedSeason.races.forEach((race, index) => {
