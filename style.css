@@ -1,0 +1,91 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    text-align: center;
+    color: #1a1a2e; /* Dark blue-purple */
+}
+
+.controls {
+    margin-bottom: 30px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.controls label {
+    font-weight: bold;
+}
+
+.controls select {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.content-area {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.standings-section, .graph-section {
+    flex: 1; /* Each section tries to take equal space */
+    min-width: 300px; /* Minimum width before wrapping */
+}
+
+
+#driver-standings-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+#driver-standings-table th, #driver-standings-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+#driver-standings-table th {
+    background-color: #e2e2ff; /* Light purple */
+    color: #1a1a2e;
+}
+
+#driver-standings-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.graph-section {
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    background-color: #fdfdff;
+}
+
+#points-chart {
+    max-height: 400px; /* Adjust as needed */
+}
+
+.data-notice {
+    text-align: center;
+    font-style: italic;
+    color: #777;
+    margin-top: 30px;
+}
