@@ -52,7 +52,7 @@ function populateRaceDropdown(seasonIndex) {
     selectedSeason.races.forEach((race, index) => {
         const option = document.createElement('option');
         option.value = index + 1; // Race index (1-based for display, matches num races processed)
-        option.textContent = `Before ${race.raceName}`;
+        option.textContent = `Race ${index+1}: ${race.raceName}`;
         raceSelect.appendChild(option);
     });
 }
