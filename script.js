@@ -31,35 +31,31 @@ function handleSeasonChange() {
     }
 
     populateRaceDropdown(seasonIndex);
-    // Automatically select "Before Race 1" and update display
+    // Automatically select the first race
     if (raceSelect.options.length > 0) {
-        raceSelect.value = "0"; // "Before Race 1" has value 0
+        raceSelect.value = "1"; 
         handleRaceChange();
     }
+    
 }
 
 function populateRaceDropdown(seasonIndex) {
     const selectedSeason = formulaEData[seasonIndex];
     raceSelect.innerHTML = ''; // Clear previous options
     raceSelect.disabled = false;
-
-    // Add "Before Race 1" option
-    const beforeRaceOption = document.createElement('option');
-    beforeRaceOption.value = "0"; // Index 0 effectively means before any race in the list
-    beforeRaceOption.textContent = "Start";
-    raceSelect.appendChild(beforeRaceOption);
-
+    
     selectedSeason.races.forEach((race, index) => {
         const option = document.createElement('option');
-        option.value = index + 1; // Race index (1-based for display, matches num races processed)
+        option.value = index+1; // Race index (1-based for display, matches num races processed)
         option.textContent = `Race ${index+1}: ${race.raceName}`;
         raceSelect.appendChild(option);
     });
+    raceSelect.value = "1";
 }
 
 function handleRaceChange() {
     const seasonIndex = parseInt(seasonSelect.value);
-    const raceUpToIndex = parseInt(raceSelect.value); // This is the number of races whose results to include
+    const raceUpToIndex = parseInt(raceSelect.value-1); // This is the number of races whose results to include
 
     if (isNaN(seasonIndex) || isNaN(raceUpToIndex)) {
         clearStandingsAndGraph();
@@ -95,7 +91,6 @@ function updateDisplay(seasonIndex, raceUpToIndex) {
     });
     
     // Accumulate points from races *before* the selected one
-    // raceUpToIndex 0 means "Before Race 1", so loop won't run, points remain 0.
     // raceUpToIndex 1 means process results of race 0 (the first race)
     for (let i = 0; i < raceUpToIndex; i++) {
         if (season.races[i] && season.races[i].results) {
